@@ -122,13 +122,38 @@
 // }
 
 ///////// ToDo with BLoC /////////////////////
-import 'package:bloc_cubit/practice/bloc/todo/todo_bloc_pr.dart';
-import 'package:bloc_cubit/practice/cubit/todo/todo_list_pr.dart';
+// import 'package:bloc_cubit/practice/bloc/todo/todo_bloc_pr.dart';
+// import 'package:bloc_cubit/practice/cubit/todo/todo_list_pr.dart';
+// import 'package:flutter/material.dart';
+// import 'package:flutter_bloc/flutter_bloc.dart';
+
+// void main() {
+//   runApp(BlocProvider(create: (_) => TodoBloc(), child: const MyApp()));
+// }
+
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       debugShowCheckedModeBanner: false,
+//       title: 'Todo Bloc App',
+//       theme: ThemeData(primarySwatch: Colors.deepPurple),
+//       home: const TodoListPr(),
+//     );
+//   }
+// }
+
+import 'package:bloc_cubit/login/Auth/bloc/auth_bloc.dart';
+import 'package:bloc_cubit/login/Auth/login_page.dart';
+import 'package:bloc_cubit/login/pallete.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
-  runApp(BlocProvider(create: (_) => TodoBloc(), child: const MyApp()));
+  // Bloc.observer = AppBlocObserver();
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -136,11 +161,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Todo Bloc App',
-      theme: ThemeData(primarySwatch: Colors.deepPurple),
-      home: const TodoListPr(),
+    return BlocProvider(
+      create: (context) => AuthBloc(),
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData.dark().copyWith(
+          scaffoldBackgroundColor: Pallete.backgroundColor,
+        ),
+        home: const LoginPage(),
+      ),
     );
   }
 }
